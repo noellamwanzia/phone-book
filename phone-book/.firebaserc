@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "phone-book-database": {
+      "hosting": {
+        "phone-book": [
+          "phone-book-database"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "phone-book-database"
+  }
+}

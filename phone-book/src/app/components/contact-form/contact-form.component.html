@@ -1,6 +1,6 @@
 <div class="container" fxLayout="column">
 
-  <form [formGroup]="contactForm" class="contact-form">
+  <form [formGroup]="contactForm" (ngSubmit)="createContact(contactForm)" class="contact-form">
     <div class="header">
       <h2>Add Contact</h2>
     </div>
@@ -29,9 +29,9 @@
       <input matInput name="address" formControlName="address"/>
     </mat-form-field>
 
-    <div  class="actions" div fxLayout="row" fxLayoutAlign="center center" fxGa>
+    <div  class="actions" div fxLayout="row">
       <button mat-button class="cancel-btn" color="warn">Cancel</button>
-      <button mat-raised-button class="submit-btn">Save</button>
+      <button type="submit" mat-raised-button class="submit-btn">Save</button>
     </div>
   </form>
 

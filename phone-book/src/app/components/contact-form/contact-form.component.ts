@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,17 +11,24 @@ export class ContactFormComponent  implements OnInit
 {
   contactForm: FormGroup; 
 
-  constructor(private _fb: FormBuilder)
+  constructor(private _fb: FormBuilder,
+              private _contactService: ContactService)
   {}
 
   ngOnInit(): void 
   {
     this.contactForm = this._fb.group({
-      firstName: [''],
+      firstName: ['', Validators.required],
       lastName: [''],
-      phone: [''],
+      phone: ['', Validators.required],
       address: [''],
-      email: ['']
+      email: ['', Validators.email]
     })
+  }
+
+  createContact(contactForm: FormGroup)
+  {
+    this._contactService.addContact(contactForm.value)
+                          .then(res => console.log(res));
   }
 }

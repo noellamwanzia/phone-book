@@ -21,12 +21,15 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { RouterModule } from '@angular/router';
 import { ContactService } from './services/contact.service';
 import { HomePageComponent } from './pages/home/home-page.component';
+import { ContactTableComponent } from './components/contact-table/contact-table.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactFormComponent,
-    HomePageComponent
+    HomePageComponent,
+    ContactTableComponent
   ],
   imports: [
     BrowserModule,

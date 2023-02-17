@@ -1,0 +1,39 @@
+<div class="container" fxLayout="column">
+
+  <form [formGroup]="contactForm" class="contact-form">
+    <div class="header">
+      <h2>Add Contact</h2>
+    </div>
+    <mat-form-field class="form-field">
+      <mat-label>First Name*</mat-label>
+      <input matInput name="firstName" formControlName="firstName"/>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Last Name</mat-label>
+      <input matInput name="lastName" formControlName="lastName"/>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Phone*</mat-label>
+      <input matInput name="phone" formControlName="phone"/>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput name="email" formControlName="email"/>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Address</mat-label>
+      <input matInput name="address" formControlName="address"/>
+    </mat-form-field>
+
+    <div  class="actions" div fxLayout="row" fxLayoutAlign="center center" fxGa>
+      <button mat-button class="cancel-btn" color="warn">Cancel</button>
+      <button mat-raised-button class="submit-btn">Save</button>
+    </div>
+  </form>
+
+
+</div>

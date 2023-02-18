@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
 import { ContactService } from './services/contact.service';
 import { HomePageComponent } from './pages/home/home-page.component';
 import { ContactTableComponent } from './components/contact-table/contact-table.component';
+import { ContactFormDialog } from './components/contact-form-dialog/contact-form-dialog.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { ContactTableComponent } from './components/contact-table/contact-table.
     AppComponent,
     ContactFormComponent,
     HomePageComponent,
-    ContactTableComponent
+    ContactTableComponent,
+    ContactFormDialog
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { ContactTableComponent } from './components/contact-table/contact-table.
     MatTableModule,
     MatIconModule,
     MatMenuModule,
+    MatDialogModule,
     MatProgressSpinnerModule ],
   providers: [ContactService],
   bootstrap: [AppComponent]

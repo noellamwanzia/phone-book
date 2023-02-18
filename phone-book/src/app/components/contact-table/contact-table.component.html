@@ -31,7 +31,7 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item class="view-btn"> 
+            <button mat-menu-item (click)="viewContact(contact)" class="view-btn"> 
               <mat-icon>remove_red_eye</mat-icon>
               <span>View</span>
             </button>

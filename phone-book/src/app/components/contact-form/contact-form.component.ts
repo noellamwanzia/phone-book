@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Contact } from 'src/app/models/contact.interface';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactFormComponent  implements OnInit
 {
+  @Input() contact: Contact;
+
   contactForm: FormGroup; 
 
   diameter = 20;
@@ -18,6 +21,8 @@ export class ContactFormComponent  implements OnInit
 
   isDisabled: boolean;
 
+  isUpdate: boolean;
+
   constructor(private _fb: FormBuilder,
               private _router: Router,
               private _contactService: ContactService)
@@ -25,12 +30,14 @@ export class ContactFormComponent  implements OnInit
 
   ngOnInit(): void 
   {
+    this.isUpdate = !!this.contact;
+
     this.contactForm = this._fb.group({
-      firstName: ['', Validators.required],
-      lastName: [''],
-      phone: ['', Validators.required],
-      address: [''],
-      email: ['', Validators.email]
+      firstName: [this.isUpdate ? this.contact.firstName : '', Validators.required],
+      lastName: [this.isUpdate ? this.contact.lastName : ''],
+      phone: [this.isUpdate ? this.contact.phone : '', Validators.required],
+      address: [this.isUpdate ? this.contact.address : ''],
+      email: [this.isUpdate ? this.contact.email :'', Validators.email]
     })
   }
 

@@ -30,8 +30,14 @@
     </mat-form-field>
 
     <div  class="actions" div fxLayout="row">
-      <button mat-button class="cancel-btn" color="warn">Cancel</button>
-      <button type="submit" mat-raised-button class="submit-btn">Save</button>
+      <button mat-button class="cancel-btn" color="warn" (click)="cancel()">Cancel</button>
+
+      <div fxLayout="row">
+        <div *ngIf="isLoading" class="spin-holder" [style.width]="diameter" [style.height]="diameter" fxFlex="100" fxLayoutAlign="space-around center">
+          <mat-spinner [diameter]="diameter"></mat-spinner>
+        </div>
+        <button type="submit" mat-raised-button class="submit-btn">Save</button>
+      </div>
     </div>
   </form>
 

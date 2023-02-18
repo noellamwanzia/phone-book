@@ -39,4 +39,17 @@ export class ContactService
     return this.contactCollectionRef.add(contact);
   }
 
+  /** Delete contact */
+  deleteContact(id: string)
+  {
+    return this.contactCollectionRef.doc(id).delete();
+  }
+
+  /** Update contact*/
+  updateContact(contact: Contact)
+  {
+    return this.contactCollectionRef.doc(contact.id)
+                                    .update(contact);
+  }
+
 }

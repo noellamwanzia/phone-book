@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -11,7 +12,14 @@ export class ContactFormComponent  implements OnInit
 {
   contactForm: FormGroup; 
 
+  diameter = 20;
+
+  isLoading: boolean;
+
+  isDisabled: boolean;
+
   constructor(private _fb: FormBuilder,
+              private _router: Router,
               private _contactService: ContactService)
   {}
 
@@ -28,7 +36,22 @@ export class ContactFormComponent  implements OnInit
 
   createContact(contactForm: FormGroup)
   {
+    this.isLoading = true;
+
+    this.isDisabled = true;
+
     this._contactService.addContact(contactForm.value)
-                          .then(res => console.log(res));
+                          .then(res => {
+                            this.isLoading = false;
+                            this.isDisabled = false;
+
+                            //redirect to home page once successfull
+                            this._router.navigate(['/'])
+                          });
+  }
+
+  cancel()
+  {
+    this._router.navigate(['/'])
   }
 }
